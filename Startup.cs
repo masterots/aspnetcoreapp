@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using TodoApi.Models;
 
 namespace aspnetcoreapp
 {
@@ -9,14 +10,13 @@ namespace aspnetcoreapp
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddTransient<ITodoRepository, TodoRepository>();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.Run(context =>
-            {
-                return context.Response.WriteAsync("Hello from ASP.NET Core!");
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
