@@ -4,28 +4,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace aspnetcoreapp.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Todos",
+                name: "Workouts",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    IsComplete = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    DistanceKm = table.Column<double>(nullable: false),
+                    Duration = table.Column<TimeSpan>(nullable: false),
+                    Reps = table.Column<int>(nullable: false),
+                    Set = table.Column<int>(nullable: false),
+                    Workout = table.Column<int>(nullable: false),
+                    WorkoutDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Todos", x => x.Id);
+                    table.PrimaryKey("PK_Workouts", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Todos");
+                name: "Workouts");
         }
     }
 }

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using TodoApi.Models;
+using WorkoutApi.Models;
 
 namespace aspnetcoreapp
 {
@@ -11,7 +11,7 @@ namespace aspnetcoreapp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<ITodoRepository, TodoRepository>();
+            services.AddTransient<IWorkoutRepository, WorkoutRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
